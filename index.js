@@ -38,11 +38,13 @@ console.log("Started");
 // .then((data)=>{
 //     // console.log(data);
 // });
-const showTemp = document.createElement('h1');
+const showTemp = document.createElement('h2');
 const weatherType = document.createElement('h6');
 const container = document.createElement('div');
 const img = document.createElement('IMG');
+const sun = document.createElement('h3');
 
+sun.classList.add('sunTime');
 img.classList.add('image');
 img.setAttribute('alt',"image");
 container.classList.add('content')
@@ -51,9 +53,11 @@ weatherType.classList.add('wt');
 
 
 //  const container = document.getElementById('container');
-container.appendChild(img)
+
+container.appendChild(img);
 container.appendChild(showTemp);
-container.appendChild(weatherType)
+container.appendChild(weatherType);
+container.appendChild(sun);
 
 
 document.querySelector('#container').appendChild(container);
@@ -68,7 +72,12 @@ navigator.geolocation.getCurrentPosition((pos)=>{
 
         [weather] = data.weather
         let iconurl = "http://openweathermap.org/img/w/" +weather.icon + ".png";
-        console.log(weather,iconurl);
+        let sunrise = new Date(data.sys.sunrise*1000)
+        let sunset = new Date(data.sys.sunset*1000);
+        let setTime = [sunset.getHours(),sunset.getMinutes()].join(':');
+        let risetime = [sunrise.getHours(),sunrise.getMinutes()].join(':');
+
+        sun.innerText = "Sunrise "+risetime+" / Sunset "+setTime
         img.setAttribute('src',iconurl);
         showTemp.innerText = data.main.temp+" \xB0C";
         weatherType.innerText = weather.main;
