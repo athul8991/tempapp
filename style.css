@@ -6,14 +6,26 @@ body{
     text-align: center;
     padding: 10px;
 }
+#container{
+    width: 350px;
+    height: 400px;
+    background: red;
+    margin: auto;
+    padding: 10px;
+    border-radius: 10px;
+}
 h1{
     text-decoration: underline;
 }
 .showTemp{
     color: rgb(73, 35, 57);
-    font-size: 80px;
-    margin: 30px;
+    font-size: 5rem;
+    /* margin: 30px; */
     text-decoration: none;
     
 
+}
+.wt{
+    font-size: 4rem;
+    color: gray;
 }

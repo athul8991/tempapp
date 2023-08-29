@@ -39,8 +39,16 @@ console.log("Started");
 //     // console.log(data);
 // });
 const showTemp = document.createElement('h1');
+const weatherType = document.createElement('h6');
+
 showTemp.classList.add("showTemp");
-document.body.appendChild(showTemp);
+weatherType.classList.add('wt');
+
+
+ const container = document.getElementById('container');
+container.appendChild(showTemp);
+container.appendChild(weatherType)
+
 navigator.geolocation.getCurrentPosition((pos)=>{
     // let  = pos.coords;
     let lat = pos.coords.latitude;
@@ -48,8 +56,10 @@ navigator.geolocation.getCurrentPosition((pos)=>{
     // console.log(lat,lon);
     fetch('https://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+lon+'&units=metric&appid=bbe7b7cc65da9ff85e601d80e7e560de')
     .then((data)=>data.json()).then((data)=>{
-        console.log(data.main.temp);
+        [weather] = data.weather
+        console.log(weather);
         showTemp.innerText = data.main.temp+" \xB0C";
+        weatherType.innerText = weather.main;
     })
     
 })
