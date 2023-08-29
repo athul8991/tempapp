@@ -5,6 +5,7 @@
 body{
     text-align: center;
     padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 #container{
     width: 350px;
@@ -31,13 +32,16 @@ h1{
 }
 .showTemp{
     color: rgb(73, 35, 57);
-    font-size: 5rem;
+    font-size: 4rem;
     /* margin: 30px; */
     text-decoration: none;
     
 
 }
 .wt{
-    font-size: 4rem;
+    font-size: 3rem;
     color: gray;
+}
+.image{
+    width:100px;
 }

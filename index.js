@@ -41,15 +41,20 @@ console.log("Started");
 const showTemp = document.createElement('h1');
 const weatherType = document.createElement('h6');
 const container = document.createElement('div');
+const img = document.createElement('IMG');
 
+img.classList.add('image');
+img.setAttribute('alt',"image");
 container.classList.add('content')
 showTemp.classList.add("showTemp");
 weatherType.classList.add('wt');
 
 
 //  const container = document.getElementById('container');
+container.appendChild(img)
 container.appendChild(showTemp);
 container.appendChild(weatherType)
+
 
 document.querySelector('#container').appendChild(container);
 
@@ -60,8 +65,11 @@ navigator.geolocation.getCurrentPosition((pos)=>{
     // console.log(lat,lon);
     fetch('https://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+lon+'&units=metric&appid=bbe7b7cc65da9ff85e601d80e7e560de')
     .then((data)=>data.json()).then((data)=>{
+
         [weather] = data.weather
-        console.log(weather);
+        let iconurl = "http://openweathermap.org/img/w/" +weather.icon + ".png";
+        console.log(weather,iconurl);
+        img.setAttribute('src',iconurl);
         showTemp.innerText = data.main.temp+" \xB0C";
         weatherType.innerText = weather.main;
     })
