@@ -40,14 +40,18 @@ console.log("Started");
 // });
 const showTemp = document.createElement('h1');
 const weatherType = document.createElement('h6');
+const container = document.createElement('div');
 
+container.classList.add('content')
 showTemp.classList.add("showTemp");
 weatherType.classList.add('wt');
 
 
- const container = document.getElementById('container');
+//  const container = document.getElementById('container');
 container.appendChild(showTemp);
 container.appendChild(weatherType)
+
+document.querySelector('#container').appendChild(container);
 
 navigator.geolocation.getCurrentPosition((pos)=>{
     // let  = pos.coords;
